@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Cypress run",
+      "type": "npm",
+      "script": "e2e:run",
+      "group": "test",
+      "problemMatcher": [],
+    },
+    {
+      "label": "Cypress open",
+      "type": "npm",
+      "script": "e2e:open",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "NPM Install",
+      "type": "npm",
+      "script": "install",
+      "problemMatcher": []
+    },
+    {
+      "label": "Cypress run spec",
+      "type": "shell",
+      "command": "npm run e2e:run -- --spec=cypress/integration/${input:spec}/*",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "spec",
+      "type": "pickString",
+      "description": "Cypress spec to run",
+      "options": ["homepage", "cookie-message", "destination", "search"]
+    }
+  ]
+}

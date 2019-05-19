@@ -1,0 +1,51 @@
+version: 2
+
+jobs:
+  test:
+    docker:
+      - image: cypress/base:8
+        environment:
+          ## this enables colors in the output
+          TERM: xterm
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v3-deps-{{ .Branch }}-
+            - v3-deps-
+      - run: npm install
+      - save_cache:
+          key: v3-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Run e2e test
+          command: |
+            mkdir -p ~/repo/cypress/results/
+            npm run e2e:devci
+          when: always
+      - store_test_results:
+          path: ~/repo/cypress/results/
+      - store_artifacts:
+          path: ~/repo/cypress/results
+      - store_artifacts:
+          path: ~/repo/cypress/videos
+      - store_artifacts:
+          path: ~/repo/cypress/screenshots
+
+workflows:
+  version: 2
+  nightly:
+    triggers:
+      - schedule:
+          cron: "30 03 * * *"
+          filters:
+            branches:
+              only:
+                - dev
+    jobs:
+      - test

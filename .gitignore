@@ -1,0 +1,4 @@
+node_modules/
+.sonarlint
+/cypress/videos
+/cypress/screenshots

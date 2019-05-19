@@ -1,0 +1,14 @@
+{
+  "baseUrl": "https://www.google.com",
+  "watchForFileChanges": true,
+  "modifyObstructiveCode": false,
+  "projectId": "",
+  "pageLoadTimeout": 30000,
+  "supportFile": "cypress/support/index.ts",
+  "env": {
+    "RETRIES": 2
+  },
+  "viewportWidth": 1200,
+  "viewportHeight": 1000,
+  "chromeWebSecurity": false
+}
