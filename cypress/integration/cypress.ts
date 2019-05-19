@@ -4,6 +4,6 @@ describe("Homepage", () => {
   });
 
   it("Should have a logo", () => {
-    cy.get("#lga");
+    cy.get(".header__HeaderContent-xi2ch0-1 hTjeot img");
   });
 });

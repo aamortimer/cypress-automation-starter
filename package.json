@@ -38,5 +38,8 @@
     "typescript": "^3.4.5",
     "typescript-eslint-parser": "^21.0.1",
     "webpack": "^4.30.0"
+  },
+  "devDependencies": {
+    "semantic-release": "^15.13.12"
   }
 }
