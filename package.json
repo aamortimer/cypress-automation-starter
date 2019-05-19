@@ -12,7 +12,7 @@
     "cy:version": "cypress version",
     "cy:run": "cypress run",
     "cy:open": "cypress open; exit 0;",
-    "test": "cy:run"
+    "test": "npm run cy:run"
   },
   "dependencies": {
     "@cypress/webpack-preprocessor": "^4.0.3",
