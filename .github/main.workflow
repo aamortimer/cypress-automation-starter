@@ -1,6 +1,6 @@
 workflow "Build and Test" {
   on = "push"
-  resolves = ["npm-cy"]
+  resolves = ["E2E Tests"]
 }
 
 action "Build" {
