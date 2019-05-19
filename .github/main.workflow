@@ -1,6 +1,6 @@
 workflow "Build and Test" {
-  resolves = ["Test"]
   on = "push"
+  resolves = ["E2E Tests"]
 }
 
 action "Build" {
@@ -8,8 +8,8 @@ action "Build" {
   args = "install"
 }
 
-action "Test" {
-  uses = "actions/npm@master"
+action "E2E Tests" {
+  uses = "bartlett705/npm-cy@f69478046d80aef1be0e17582c189a59bbfc9aa1"
   needs = ["Build"]
   args = "test"
 }
